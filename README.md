@@ -1,4 +1,4 @@
-Distributed Indexing and Querying of Big RDF Data using NoSQL and MapReduce?
+Distributed Indexing and Querying of Big RDF Data using NoSQL and MapReduce
 
 H2RDF+
 
