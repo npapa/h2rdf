@@ -1,26 +1,12 @@
-<!--
-  Copyright  
-  
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-  
-    http://www.apache.org/licenses/LICENSE-2.0
-  
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
--->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>gr.ntua</groupId>
+	<groupId>eu.arcomem</groupId>
 	<artifactId>h2rdf</artifactId>
 	<version>0.1-SNAPSHOT</version>
-	<name>H2RDF+</name>
-	<description>H2RDF is a distributed RDF database that use hadoop and hbase to index and query RDF data</description>
+	<name>Arcomem RdfStore</name>
+	  <url>http://maven.apache.org</url>
+	<description>The arcomem RDFstore</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -51,7 +37,12 @@
 			<artifactId>json-lib</artifactId>
 			<version>2.4</version>
         	<classifier>jdk15</classifier>
-		</dependency>  
+		</dependency>       
+    	<dependency>
+        	<groupId>com.googlecode.javaewah</groupId>
+        	<artifactId>JavaEWAH</artifactId>
+        	<version>0.3.2</version>
+    	</dependency>
 		<dependency>
     		<groupId>org.apache.hadoop</groupId>
     		<artifactId>hadoop-core</artifactId>
@@ -62,6 +53,11 @@
   			<groupId>org.semanticweb.yars</groupId>
   			<artifactId>nxparser</artifactId>
   			<version>1.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>jgrapht</groupId>
+			<artifactId>jgrapht</artifactId>
+			<version>0.7.3</version>
 		</dependency>
             
 	</dependencies>	
@@ -98,7 +94,7 @@
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>2.2.1</version>
 				<configuration>
-					<finalName>H2RDF</finalName>
+					<finalName>H2RDF2</finalName>
 					<appendAssemblyId>false</appendAssemblyId>
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
@@ -113,7 +109,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>gr.ntua.h2rdf.queryProcessing.QueryExample</mainClass>
+							<mainClass>gr.ntua.h2rdf.examples.QueryExampleOpenRDF</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
@@ -121,13 +117,28 @@
 		</plugins>
 	</build>
 	<distributionManagement>
+		<repository>
+			<id>arcomem-releases</id>
+			<name>Southampton ARCOMEM Maven Releases Repository</name>
+			<url>http://maven.ecs.soton.ac.uk/content/repositories/arcomem-releases/</url>
+		</repository>
 		<snapshotRepository>
-			<id>sonatype-snapshots</id>
-			<name>Sonatype snapshot</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<id>arcomem-snapshots</id>
+			<name>Southampton ARCOMEM Maven Snaphots Repository</name>
+			<url>http://maven.ecs.soton.ac.uk/content/repositories/arcomem-snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 	<repositories>
+		<repository>
+			<id>arcomem-proxy</id>
+			<name>ARCOMEM Proxy Repository</name>
+			<url>http://maven.ecs.soton.ac.uk/content/groups/arcomem-proxy/</url>
+		</repository>
+		<repository>
+			<id>openimaj</id>
+			<name>Southampton OpenImaj</name>
+			<url>http://maven.openimaj.org</url>
+		</repository>
 		<repository>
 			<id>thirdparty</id>
 			<name>Southampton Third Party Maven Releases Repository</name>
@@ -145,9 +156,15 @@
             <enabled>true</enabled>
           </snapshots>
         </repository>
-        <repository>
+		<repository>
+            <id>immaven</id>
+            <name>immaven-releases</name>
+            <url>http://ia200110.eu.archive.org:8081/artifactory/immaven</url>
+        </repository>
+            <repository>
             <id>nxparser-snapshots</id>
             <url>http://nxparser.googlecode.com/svn/snapshots</url>
         </repository>
 	</repositories>
 </project>
+
