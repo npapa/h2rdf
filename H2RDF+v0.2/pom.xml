@@ -165,6 +165,10 @@
             <id>nxparser-snapshots</id>
             <url>http://nxparser.googlecode.com/svn/snapshots</url>
         </repository>
+	<repository>
+ 		<id>nxparser-repo</id>
+ 		<url>http://nxparser.googlecode.com/svn/repository</url>
+	</repository>
 	</repositories>
 </project>
 
